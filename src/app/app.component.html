@@ -1,33 +1,51 @@
-<h1>Password Generator</h1>
-<div>
-  <label>Enter Length</label>
-  <input type="number" min="0" (input)="onLengthChange($event)" />
-</div>
+<div class="container">
+  <div class="columns is-centered">
+    <div class="box column is-one-third">
+      <h1 class="title has-text-centered">Password Generator</h1>
 
-<div>
-  <label>Use Letters</label>
-  <input (change)="onLettersChange()" type="checkbox">
-</div>
-<div>
-  <label>Use Numbers</label>
-  <input (change)="onNumbersChange()" type="checkbox">
-</div>
-<div>
-  <label>Use Symbols</label>
-  <input (change)="onSymbolsChange()" type="checkbox">
-</div>
+      <div class="field">
+        <label>Length</label>
+        <input class="input" (input)="onLengthChange($event)" />
+      </div>
 
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onLettersChange()" type="checkbox" />
+            Use Letters
+          </label>
+        </div>
+      </div>
 
-<div>
-  <!-- event binding syntax -->
-  <button
-    [disabled]="
-    !(length && (includeLetters || includeNumbers || includeSymbols))"
-    (click)="onButtonClick()">Generate!</button>
-</div>
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onNumbersChange()" type="checkbox" />
+            Use Numbers
+          </label>
+        </div>
+      </div>
 
-<div>
-  <label>Your password</label>
-  <!-- property binding syntax -->
-  <input [value]="password" />
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onSymbolsChange()" type="checkbox" />
+            Use Symbols
+          </label>
+        </div>
+      </div>
+
+      <button [disabled]="
+          !(length && (includeLetters || includeSymbols || includeNumbers))
+        " (click)="onButtonClick()"
+        class="button is-link is-fullwidth">
+        Generate!
+      </button>
+
+      <div class="box">
+        <label>Your Password</label>
+        <input class="input" [value]="password" />
+      </div>
+    </div>
+  </div>
 </div>
