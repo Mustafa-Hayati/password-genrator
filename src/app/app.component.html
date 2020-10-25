@@ -1,7 +1,7 @@
 <h1>Password Generator</h1>
 <div>
   <label>Enter Length</label>
-  <input />
+  <input type="number" min="0" (input)="onLengthChange($event)" />
 </div>
 
 <div>
@@ -20,7 +20,10 @@
 
 <div>
   <!-- event binding syntax -->
-  <button (click)="onButtonClick()">Generate!</button>
+  <button
+    [disabled]="
+    !(length && (includeLetters || includeNumbers || includeSymbols))"
+    (click)="onButtonClick()">Generate!</button>
 </div>
 
 <div>
